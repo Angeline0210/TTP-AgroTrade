@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const HomeBanner= () => {
     return (
         <div className="relative bg-gradient-to-r
@@ -26,12 +28,8 @@ const HomeBanner= () => {
                         Purchase more to get BUNDLE PRICE!
                     </p>
                 </div>
-                <div className="w-1/3 relative aspect-video">
-                    {/* <Image
-                    src='/banner.image.png'
-                    alt='Banner Image'
-                    className="object-contain"
-                    /> */}
+                <div className="w-2/3 relative aspect-video">
+                    <Image src="/banner-image.png" fill alt="Banner Image" className="object-contain"/>
                 </div>
             </div>
         </div>
