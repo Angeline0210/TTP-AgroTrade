@@ -26,7 +26,9 @@ interface ProductCardProps{
 
 const ProductCard:React.FC<ProductCardProps>= ({data}) => {
     const productImage=data.image[0];  //assuming there's only one image
+    const productRating= data.reviews.reduce((acc:number,item:any)=>item.rating +acc, 0) /data.reviews.length
 
+    
     return (
     <div className="col-span-1 
     cursor-pointer 
@@ -67,7 +69,7 @@ const ProductCard:React.FC<ProductCardProps>= ({data}) => {
             </div>
             <div className="mt-4">{truncateText(data.name)}</div>
             <div>
-                <Rating value={4} readOnly />
+                <Rating value={productRating} readOnly />
             </div>
             <div>{data.reviews.length} reviews</div>
             <div className="font-semibold">{formatPrice(data.price)}</div>
