@@ -2,6 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+***
+Make sure node.js is installed, or else npm can't be used!
+1) cd agrotrade
+2) cd app
+3) cd components
+4) npm run dev
+***
+
 First, run the development server:
 
 ```bash
