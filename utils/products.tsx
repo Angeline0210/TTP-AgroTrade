@@ -4,7 +4,7 @@ export const products = [
       id: "64a654593e91b8e73a351e9b",
       name: "Empty Fruit Brunches from Kampung Sungai",
       description: "It was collected on 11/02/2024.",
-      price: 10.3,
+      price: 9.99,
     //   brand: "apple",
       category: "Empty Fruit Brunches",
       inStock: true,
@@ -21,7 +21,7 @@ export const products = [
       name: "Fibres from oil palm",
       description:
         "Unused fibres from oil palm need to sell.",
-      price: 8.5,
+      price: 7.99,
     //   brand: "logitech",
       category: "Mesocarp Fibres",
       inStock: true,
@@ -60,8 +60,8 @@ export const products = [
       id: "648437b38c44d52b9542e340",
       name: "Trunks (Ipoh)",
       description:
-        'Just collected from the oil palm few days ago.',
-      price: 20.00,
+        'Recently plucked from our thriving oil palm groves just days ago, these palm trunks embody freshness and quality. Carefully chosen for their robustness, our skilled harvesters ensure that only the best make the cut. Straight from the plantation to your kitchen, these trunks are ready to add a touch of natural goodness to your culinary creations. ',
+      price: 19.99,
     //   brand: "Apple",
       category: "Trunks",
       inStock: true,
@@ -99,7 +99,7 @@ export const products = [
       name: "Shell",
       description:
         "Palm kernel shell from Sungai Buloh.",
-      price: 25.5,
+      price: 24.99,
     //   brand: "logitech",
       category: "Palm Kernel Shell",
       inStock: true,
@@ -115,7 +115,7 @@ export const products = [
       name: 'Fronds from Lumut',
       description:
         'Selling fronds for cheap price.',
-      price: 15.00,
+      price: 14.99,
     //   brand: "Nerunsa",
       category: "Fronds",
       inStock: true,
