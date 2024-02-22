@@ -70,7 +70,28 @@ export const products = [
         alt:"Trunks",
       }],
     
-      reviews:[],
+      reviews:[{
+          id: "65a75a6158b470c6e06959ee",
+          userId: "3475af156bad4917456e6e1e",
+          productId: "648437b38c44d52b9542e340",
+          rating: 3,
+          comment: "great",
+          createdDate: "2023-08-06T06:08:33.067Z",
+          user: {
+            id: "6475af156bad4917456e6e1e",
+            name: "Nana",
+            email: "nanapipo@gmail.com",
+            emailVerified: null,
+            image:[{
+              src:"/trunkReview-image.png",
+              alt:"Trunks review",
+            }],
+            hashedPassword: null,
+            createdAt: "2024-01-20T08:08:53.979Z",
+            updatedAt: "2024-01-20T08:08:53.979Z",
+            role: "ADMIN",
+          },
+        },],
     },
 
     {
