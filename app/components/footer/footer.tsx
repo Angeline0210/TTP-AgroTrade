@@ -43,7 +43,7 @@ const Footer = () => {
                 <h3 className="text-base 
                     font-bold
                     mb-2">About Us</h3>
-                    <p className="mb-2"> 
+                    <p className="text-justify mb-2"> 
                     This app aims to facilitate the trading of oil palm biomass, a renewable 
                     resource. By promoting biomass as an alternative to fossil fuels, 
                     this app can help reduce greenhouse gas emissions and mitigate climate 
@@ -52,6 +52,7 @@ const Footer = () => {
                     sustainable agricultural practices. The primary focus of this app will 
                     be on the biomass derived from oil palm, specifically narrowed down 
                     from the broader biomass sector in Malaysia.</p>
+                <hr className="w-[30%] my-2"/>
                 <p>&copy; {new Date().getFullYear()} AgroTrade. All rights reserved</p>
                 </div>
                 <FooterList>
