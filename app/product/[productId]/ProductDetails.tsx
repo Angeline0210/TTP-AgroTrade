@@ -3,6 +3,7 @@ import SetQuantity from "@/app/components/products/SetQuantity";
 import {Rating} from "@mui/material";
 import {useCallback,useState} from 'react';
 import Button from "@/app/components/Button";
+import ProductImage from "@/app/components/products/ProductImage";
 
 interface ProductDetailsProps{
     product:any
@@ -13,7 +14,10 @@ export type CartProductType={
     name:string,
     description:string,
     category:string,
-    image: string,
+    image: {
+        src:string;
+        alt:string;
+    },
     quantity:number,
     price:number
 }
@@ -77,7 +81,7 @@ const ProductDetails: React.FC<ProductDetailsProps>=({product})=>{
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>Images</div>
+            <ProductImage cartProduct={cartProduct} product={product} image={product.image[0]}/>
             <div className="flex flex-col gap-1 text-slate-500 text-sm">
                 <h2 className="text-3xl font-medium 
                 text-slate-700">{product.name}</h2>
@@ -98,8 +102,8 @@ const ProductDetails: React.FC<ProductDetailsProps>=({product})=>{
                 handleQtyDecrease={handleQtyDecrease}
                 />
                 <Horizontal/>
-                <div>
-                    <Button
+                <div className="max-w-[300px]">
+                    <Button 
                     label="Add to Cart" onClick={()=>
                     {}} />
                 </div>
