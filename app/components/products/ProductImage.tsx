@@ -49,10 +49,10 @@ const ProductImage:React.FC<ProductImageProps> = ({
             className="w-full
             h-full
             object-contain
-            max-h-[500px]
-            min-h-[300px]
-            sm:min-h-[400px]
-            "  />
+            max-h-[400px]
+            min-h-[400px]
+            sm:min-h-[300px]"
+            style={{objectPosition:'top'}}  />
         </div>
     // </div> 
     );
