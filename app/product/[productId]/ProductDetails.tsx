@@ -2,6 +2,7 @@
 import SetQuantity from "@/app/components/products/SetQuantity";
 import {Rating} from "@mui/material";
 import {useCallback,useState} from 'react';
+import Button from "@/app/components/Button";
 
 interface ProductDetailsProps{
     product:any
@@ -97,8 +98,12 @@ const ProductDetails: React.FC<ProductDetailsProps>=({product})=>{
                 handleQtyDecrease={handleQtyDecrease}
                 />
                 <Horizontal/>
-                <div>add to cart</div>
+                <div>
+                    <Button
+                    label="Add to Cart" onClick={()=>
+                    {}} />
                 </div>
+            </div>
         </div>
     );
 };
