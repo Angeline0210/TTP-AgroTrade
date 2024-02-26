@@ -79,11 +79,11 @@ export const products = [
           createdDate: "2023-08-06T06:08:33.067Z",
           user: {
             id: "6475af156bad4917456e6e1e",
-            name: "Nana",
-            email: "nanapipo@gmail.com",
+            name: "Ed Sheeran",
+            email: "edsheeran@gmail.com",
             emailVerified: null,
             image:[{
-              src:"/trunkReview-image.png",
+              src:"/edSheeran-image.jpeg",
               alt:"Trunks review",
             }],
             hashedPassword: null,
