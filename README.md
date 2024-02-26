@@ -5,6 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - mui.com
 - nvm (optional)
 - react hot toast
+
 ## Getting Started
 
 ***
