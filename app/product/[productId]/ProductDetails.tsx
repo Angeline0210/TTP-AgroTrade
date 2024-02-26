@@ -6,6 +6,7 @@ import Button from "@/app/components/Button";
 import ProductImage from "@/app/components/products/ProductImage";
 import { useCart } from "@/hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 interface ProductDetailsProps{
     product:any
@@ -44,6 +45,7 @@ const ProductDetails: React.FC<ProductDetailsProps>=({product})=>{
         price:product.price,
 
     })
+    const router=useRouter()
 
     console.log(cartProducts);
 
@@ -121,6 +123,9 @@ const ProductDetails: React.FC<ProductDetailsProps>=({product})=>{
                     <MdCheckCircle className="text-teal-400" size={20} />
                     <span>Product added to cart</span>
                 </p>
+                <div className="max-w-[300px]">
+                    <Button label="View Cart" outline onClick={()=>{router.push('/cart')}}/>
+                </div>
                 </>):(
                 <>
                     <SetQuantity cartProduct={cartProduct}
