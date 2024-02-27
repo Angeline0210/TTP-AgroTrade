@@ -35,9 +35,12 @@ export const CartContextProvider=(props:Props)=>{
             } else{
                 updatedCart=[product]
             }
+    
             toast.success("Product added to cart");
             localStorage.setItem('AgroTradeCartItems', JSON.stringify(updatedCart))
+            
             return updatedCart;
+
         })
     },[]);
 
