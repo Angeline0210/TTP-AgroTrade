@@ -6,7 +6,11 @@ import { toast } from "react-hot-toast";
 type CartContextType={
     cartTotalQty:number;
     cartProducts:CartProductType[] |null;
-    handleAddProductToCart:(product:CartProductType)=> void
+    handleAddProductToCart:(product:CartProductType)=> void;
+    handleRemoveProductFromCart:(product:CartProductType)=> void;
+    handleCartQtyIncrease:(product:CartProductType)=> void;
+    handleCartQtyDecrease:(product:CartProductType)=> void;
+    handleClearCart:()=>void
 }
 
 export const CartContext=createContext<CartContextType |null>(null);
@@ -44,10 +48,75 @@ export const CartContextProvider=(props:Props)=>{
         })
     },[]);
 
+    const handleRemoveProductFromCart=useCallback((
+        product:CartProductType
+    )=>{
+        if(cartProducts){
+            const filteredProducts=cartProducts.filter((item)=>{
+                return item.id !== product.id
+            })
+            setCartProducts(filteredProducts)
+            toast.success("Product removed");
+            //localStorage.setItem('AgroTradeCartItems', JSON.stringify(updatedCart))
+            localStorage.setItem('AgroTradeCartItems', JSON.stringify(filteredProducts))
+        }
+    },[cartProducts])
+
+    const handleCartQtyIncrease=useCallback((product:CartProductType)=>{
+        let updatedCart;
+        if(product.quantity===99){
+            return toast.error('Oops! Maximum reached');
+        }
+        if(cartProducts){
+            updatedCart=[...cartProducts]
+
+            const existingIndex=cartProducts.findIndex((item:any)=>item.id===product.id)
+        
+            if(existingIndex > -1){
+                updatedCart[existingIndex].quantity= ++updatedCart[existingIndex].quantity
+            }
+            setCartProducts(updatedCart)
+            localStorage.setItem('AgroTradeCartItems',JSON.stringify(updatedCart))
+        }
+    },[cartProducts])
+
+
+
+
+    const handleCartQtyDecrease=useCallback((product:CartProductType)=>{
+        let updatedCart;
+        if(product.quantity===1){
+            return toast.error('Oops! Minimum reached');
+        }
+        if(cartProducts){
+            updatedCart=[...cartProducts]
+
+            const existingIndex=cartProducts.findIndex((item:any)=>item.id===product.id)
+        
+            if(existingIndex > -1){
+                updatedCart[existingIndex].quantity= -- updatedCart[existingIndex].quantity
+            }
+            setCartProducts(updatedCart)
+            localStorage.setItem('AgroTradeCartItems',JSON.stringify(updatedCart))
+        }
+    },[cartProducts])
+
+
+    const handleClearCart=useCallback(()=>{
+        setCartProducts(null)
+        setCartTotalQty(0)
+        localStorage.setItem('AgroTradeCartItems',JSON.stringify(null))
+    },[cartProducts])
+
     const value={
         cartTotalQty,
         cartProducts,
-        handleAddProductToCart
+        handleAddProductToCart,
+        handleRemoveProductFromCart,
+        handleCartQtyIncrease,
+        handleCartQtyDecrease,
+        handleClearCart
+        
     }
     return <CartContext.Provider value={value} {...props}/>
 }

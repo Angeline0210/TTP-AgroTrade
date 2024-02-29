@@ -4,6 +4,8 @@ import { CartProductType } from "../product/[productId]/ProductDetails";
 import Link from "next/link";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
+import SetQuantity from "../components/products/SetQuantity";
+import { useCart } from "@/hooks/useCart";
 
 
 
@@ -13,7 +15,7 @@ interface ItemContentProps{
 
 const ItemContent:React.FC<ItemContentProps> = ({item}) => {
     const imageSource = Array.isArray(item.image) ? item.image[0] : item.image;
-    
+    const {handleRemoveProductFromCart, handleCartQtyIncrease, handleCartQtyDecrease}=useCart()
     return ( <div className="
     grid
     grid-cols-5
@@ -45,7 +47,9 @@ const ItemContent:React.FC<ItemContentProps> = ({item}) => {
                 <Link href={'/product/${item.id}'}>
                     {truncateText(item.name)}
                     <div className="[w-70px]">
-                        <button className="text-slate-500 underline" onClick={()=>{}}>
+                        <button className="text-slate-500 underline" onClick={()=>{
+                            handleRemoveProductFromCart(item)
+                        }}>
                             Remove
                         </button>
 
@@ -54,8 +58,18 @@ const ItemContent:React.FC<ItemContentProps> = ({item}) => {
 
             </div>
         </div>
-        <div>{formatPrice(item.price)}</div>
-        <div></div>
+        <div className="justify-self-center">{formatPrice(item.price)}</div>
+        <div className="justify-self-center">
+            <SetQuantity 
+            cartCounter={true}
+            cartProduct={item}
+            handleQtyIncrease={()=>{handleCartQtyIncrease(item)}}
+            handleQtyDecrease={()=>{handleCartQtyDecrease(item)}}
+            />
+        </div>
+        <div className="justify-self-end font-semibold">
+            {formatPrice(item.price*item.quantity)}
+        </div>
         <div></div>
     </div> );
 }
