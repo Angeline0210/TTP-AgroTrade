@@ -6,6 +6,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - nvm (optional)
 - react hot toast
 - react hook form
+- prisma (nextAuthjs)
+- bcrypt
+- axios (fetch data)
 
 ## Getting Started
 
