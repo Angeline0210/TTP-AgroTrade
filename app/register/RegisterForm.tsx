@@ -10,6 +10,7 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {signIn} from 'next-auth/react'
+//import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
 
 
@@ -33,7 +34,9 @@ const RegisterForm = () => {
 
     const onSubmit:SubmitHandler<FieldValues>=(data)=>
     {
-        setIsLoading(true)
+        console.log('Data to be sent to server:',data);
+
+        setIsLoading(true);
         axios.post('/api/register',data).then(()=>{
             toast.success('Account created')
 
@@ -52,7 +55,9 @@ const RegisterForm = () => {
                     toast.error(callback.error);
                 }
             })
-        }).catch(()=>toast.error("Something went wrong")).finally(()=>{
+        }).catch(()=>{toast.error("Something went wrong")
+            })
+            .finally(()=>{
             setIsLoading(false);
         });
 

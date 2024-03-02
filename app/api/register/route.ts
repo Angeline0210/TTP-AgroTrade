@@ -14,5 +14,7 @@ export async function POST (request:Request){
             hashedPassword,
         }
     })
+
+    console.log("Created User:", user);
     return NextResponse.json(user)
 }
