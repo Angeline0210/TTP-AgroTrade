@@ -7,7 +7,9 @@ import UserMenu from "./UserMenu";
 const redressed= Redressed({subsets: ["latin"],
 weight:["400"]});
 
-const NavBar = () => {
+const NavBar = async() => {
+    
+
     return <div className="
     sticky
     top-0

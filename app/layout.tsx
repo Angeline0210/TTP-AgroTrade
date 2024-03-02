@@ -5,6 +5,7 @@ import NavBar from './components/nav/NavBar'
 import Footer from './components/footer/footer'
 import CartProvider from '@/providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
+import { getCurrentUser } from '@/actions/getCurrentUser'
 
 
 const poppins = Poppins({ subsets: ['latin'],weight:['400','700'] })
@@ -19,6 +20,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  (async()=>{
+    const currentUser= await getCurrentUser()
+    console.log("user<<<",currentUser)
+  })();
+  
+
   return (
     <html lang="en">
       <body className={`${poppins.className} text-slate-700`}>
