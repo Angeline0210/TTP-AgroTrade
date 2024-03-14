@@ -11,7 +11,9 @@ type CartContextType={
     handleRemoveProductFromCart:(product:CartProductType)=> void;
     handleCartQtyIncrease:(product:CartProductType)=> void;
     handleCartQtyDecrease:(product:CartProductType)=> void;
-    handleClearCart:()=>void
+    handleClearCart:()=>void;
+    paymentIntent:string|null;
+    handleSetPaymentIntent:(val:string|null)=>void;
 }
 
 export const CartContext=createContext<CartContextType |null>(null);
@@ -24,16 +26,19 @@ export const CartContextProvider=(props:Props)=>{
     const [cartTotalQty, setCartTotalQty]=useState(0);
     const [cartProducts, setCartProducts]= useState<CartProductType[] | null>(null)
     const [cartTotalAmount, setCartTotalAmount]=useState(0)
-
+    const [paymentIntent, setPaymentIntent]=useState<string | null> (null)
     
-    console.log('qty',cartTotalQty)
-    console.log('amount',cartTotalAmount)
+    // console.log('qty',cartTotalQty)
+    // console.log('amount',cartTotalAmount)
 
     useEffect(()=>{
         const cartItems:any=localStorage.getItem('AgroTradeCartItems');
         const cProducts: CartProductType[] |null=JSON.parse(cartItems);
+        const agroTradePaymentIntent:any=localStorage.getItem('agroTradePaymentIntent')
+        const paymentIntent:string|null=JSON.parse(agroTradePaymentIntent)
 
         setCartProducts(cProducts)
+        setPaymentIntent(paymentIntent)
     },[]);
 
     useEffect(()=>{
@@ -136,6 +141,11 @@ export const CartContextProvider=(props:Props)=>{
         localStorage.setItem('AgroTradeCartItems',JSON.stringify(null))
     },[cartProducts])
 
+    const handleSetPaymentIntent=useCallback((val:string |null)=>{
+        setPaymentIntent(val)
+        localStorage.setItem('agroTradePaymentIntent',JSON.stringify(val))
+    },[paymentIntent])
+
     const value={
         cartTotalQty,
         cartTotalAmount,
@@ -144,7 +154,9 @@ export const CartContextProvider=(props:Props)=>{
         handleRemoveProductFromCart,
         handleCartQtyIncrease,
         handleCartQtyDecrease,
-        handleClearCart
+        handleClearCart,
+        paymentIntent,
+        handleSetPaymentIntent,
         
     }
     return <CartContext.Provider value={value} {...props}/>

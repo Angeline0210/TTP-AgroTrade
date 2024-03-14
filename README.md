@@ -9,6 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - prisma (nextAuthjs)
 - bcrypt
 - axios (fetch data)
+- stripe (payment gateway)
 
 ## Getting Started
 

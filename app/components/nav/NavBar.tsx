@@ -32,9 +32,27 @@ const NavBar = async() => {
             ">
             
                 <Link href="/" className={`${redressed.className} font-bold text-2xl`}>
-                    AgroTrade
+                    <img src="/logo-image.png" alt="Logo" className="w-20 h-20" />
+                    
                 </Link>
-                <div className="hidden md:block">Search</div>
+                {/* <div className="hidden md:block">Search</div> */}
+                <div className="hidden md:block">
+                    <div className="mx-auto" style={{maxWidth:"900px"}}>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        className="
+                        px-5
+                        py-4
+                        bg-gray-100
+                        border
+                        border-gray-300
+                        rounded-md
+                        focus:outline-none
+                        focus:border-blue-500"
+                    />
+                    </div>
+                </div>
                 <div className="flex item-center gap-8 md:gap-12">
                     <CartCount />
                     <UserMenu currentUser={currentUser}/>
